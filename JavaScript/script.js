@@ -1,6 +1,5 @@
 class Alcancia {
     constructor() {
-        // Intentamos obtener el saldo de localStorage, si no existe, inicia en 0
         this.saldo = parseFloat(localStorage.getItem("saldoAlcancia")) || 0;
     }
 
@@ -35,7 +34,6 @@ class Alcancia {
 const miAlcancia = new Alcancia();
 const operaciones = document.getElementById('operaciones');
 
-// 1. CONSULTAR SALDO
 document.getElementById('consultar').addEventListener('click', function() {
     const saldoActual = miAlcancia.obtenerSaldo();
     operaciones.innerHTML = `
@@ -48,8 +46,6 @@ document.getElementById('consultar').addEventListener('click', function() {
         </div>
     `;
 });
-
-///////////////////////////////////////////////////////////////////////////////////////////////
 
 document.getElementById('ingresar').addEventListener('click',function(){
     let botones=`
@@ -78,8 +74,6 @@ function procesarDeposito(valor){
     const deposito = document.getElementById('mensajeDep');
     deposito.innerText = mensaje;
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////
 
 document.getElementById('retirar').addEventListener('click', function(){
     const saldoActual = miAlcancia.obtenerSaldo();
@@ -118,7 +112,6 @@ document.getElementById('retirar').addEventListener('click', function(){
             return;
         }
 
-        // Intentar retirar usando el método de la clase
         const respuesta = miAlcancia.retirar(monto);
         saldoActual.innerText = miAlcancia.obtenerSaldo().toFixed(2);
         mensajeRet.innerText = respuesta;
